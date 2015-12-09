@@ -1,53 +1,50 @@
 package csu.matos.fragments;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
-public class MainActivity extends Activity implements MainCallbacks {
-  
-    FragmentRed redFragment;
-    FragmentBlue  blueFragment ;
-    
+
+public class MainActivity extends Activity {
+
+	// Declaring our tabs and the corresponding fragments.
+	ActionBar.Tab stats, timer, settings;
+	Fragment statsFragmentTab = new StatsFragmentTab();
+	Fragment timerFragmentTab = new TimerFragmentTab();
+	Fragment settingsFragmentTab = new SettingsFragmentTab();
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		// Asking for the default ActionBar element that our platform supports.
+		ActionBar actionBar = getActionBar();
+
+		// Screen handling while hiding ActionBar icon.
+		actionBar.setDisplayShowHomeEnabled(false);
+
+		// Screen handling while hiding Actionbar title.
+		actionBar.setDisplayShowTitleEnabled(false);
+
+		// Creating ActionBar tabs.
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+		// Setting custom tab icons.
+		stats = actionBar.newTab().setText("Stats");
+		timer = actionBar.newTab().setText("Timer");
+		settings = actionBar.newTab().setText("Settings");
+
+		// Setting tab listeners.
+		stats.setTabListener(new TabListener(statsFragmentTab));
+		timer.setTabListener(new TabListener(timerFragmentTab));
+		settings.setTabListener(new TabListener(settingsFragmentTab));
+
+		// Adding tabs to the ActionBar.
+		actionBar.addTab(stats);
+		actionBar.addTab(timer);
+		actionBar.addTab(settings);
 	}
-	
-	// ---------------------------------------------------------------------------------
-	@Override
-	public void onAttachFragment(Fragment fragment) {
-		super.onAttachFragment(fragment);
-		// get a reference to each fragment attached to the GUI 
-		if (fragment.getClass() == FragmentRed.class ){
-			//Log.e("<<<onAttachFragment RED>>>", fragment + " " + fragment.getId() );
-			redFragment = (FragmentRed) fragment;
-		}
-		if (fragment.getClass() == FragmentBlue.class ){
-			//Log.e("<<<onAttachFragment BLUE>>>", fragment + " " + fragment.getId() );
-			blueFragment = (FragmentBlue) fragment;
-		}
-		
-	}
-	// ------------------------------------------------------------------------------------------------	
-
-	@Override
-	public void onMsgFromFragToMain(String sender, String strValue) {
-		Toast.makeText(getApplication(), " MAIN GOT MSG >> " + sender 
-				      + "\n" + strValue, Toast.LENGTH_LONG).show();
-		
-		if (sender.equals("RED-FRAG")){
-			//TODO: do here something smart on behalf of BLUE fragment
-
-		}
-		
-		if (sender.equals("BLUE-FRAG")) {
-			redFragment.onMsgFromActivity("\nSender: " + sender + "\nMsg: " + strValue);			
-		}
-
-	}
-
 }
