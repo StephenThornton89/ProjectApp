@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@drawable/grass_background">
+ 
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="" android:id="@+id/textView"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Goals" android:id="@+id/textView2"
+            android:layout_below="@+id/editText2" android:layout_alignLeft="@+id/editText"
+            android:layout_alignStart="@+id/editText" android:textColor="#fcffffff"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Points" android:id="@+id/textView3"
+            android:layout_alignTop="@+id/textView2" android:layout_alignRight="@+id/editText"
+            android:layout_alignEnd="@+id/editText" android:textColor="#fcffffff"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Goals" android:id="@+id/textView4"
+            android:layout_below="@+id/editText2" android:layout_alignLeft="@+id/editText2"
+            android:layout_alignStart="@+id/editText2" android:textColor="#fcffffff"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Points" android:id="@+id/textView5"
+            android:layout_below="@+id/editText2" android:layout_alignRight="@+id/editText2"
+            android:layout_alignEnd="@+id/editText2" android:textColor="#fcffffff"/>
+    <EditText
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/editText"
+            android:layout_marginBottom="133dp"
+            android:layout_above="@+id/textView" android:layout_toLeftOf="@+id/textView"
+            android:layout_toStartOf="@+id/textView" android:hint="Team 1" android:textColor="#ff0a0a0a"
+            android:backgroundTint="#ffe6ffa0" android:background="#ffff2e3f"/>
+    <EditText
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/editText2"
+            android:layout_alignTop="@+id/editText" android:layout_toRightOf="@+id/textView"
+            android:layout_toEndOf="@+id/textView" android:hint="Team 2" android:textColor="#ff080808"
+            android:backgroundTint="#ffe6ffa0" android:background="#ff28ff25"/>
+    <Button
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text="+"
+            android:id="@+id/button2"
+            android:onClick="onClickPlusGoal1"
+            android:layout_below="@+id/textView2" android:layout_alignLeft="@+id/textView2"
+            android:layout_alignStart="@+id/textView2" android:background="#FF585858" android:textColor="#FFFFFFFF"/>
+    <Button android:layout_width="50dp" android:layout_height="40dp" android:text="+" android:id="@+id/button"
+            android:layout_below="@+id/textView3" android:layout_alignLeft="@+id/textView3" android:onClick="onClickPlusPoint1"
+            android:layout_alignStart="@+id/textView3" android:background="#FF585858" android:textColor="#FFFFFFFF"/>
+    <Button android:layout_width="50dp" android:layout_height="40dp" android:text="+" android:id="@+id/button3"
+            android:layout_below="@+id/textView4" android:layout_alignLeft="@+id/textView4" android:onClick="onClickPlusGoal2"
+            android:layout_alignStart="@+id/textView4" android:background="#FF585858" android:textColor="#FFFFFFFF"/>
+    <Button android:layout_width="50dp" android:layout_height="40dp" android:text="+" android:id="@+id/button4"
+            android:layout_below="@+id/textView5" android:layout_alignLeft="@+id/textView5" android:onClick="onClickPlusPoint2"
+            android:layout_alignStart="@+id/textView5" android:background="#FF585858" android:textColor="#FFFFFFFF"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Stats"
+            android:id="@+id/button5"
+            android:background="#ff1aff3f"
+            android:layout_alignTop="@+id/button6" android:layout_toLeftOf="@+id/textView"
+            android:layout_toStartOf="@+id/textView"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Stats"
+            android:id="@+id/button6"
+            android:background="#ff1aff3f"
+            android:layout_marginTop="42dp" android:layout_below="@+id/textView"
+            android:layout_alignEnd="@+id/textView5"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFDFF44"
+            android:text="Players Database"
+            android:id="@+id/button7"
+            android:layout_marginBottom="34dp" android:textColor="#ff010101"
+            android:onClick="onClickDB"
+            android:layout_alignParentBottom="true" android:layout_alignEnd="@+id/textView4"/>
+
+</RelativeLayout>
