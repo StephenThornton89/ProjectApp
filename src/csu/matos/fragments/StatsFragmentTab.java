@@ -63,7 +63,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 onClickPlusPoint2(v);
                 break;
             case R.id.button7:
-                //onClickDB(v);
+                onClickDB(v);
                 break;
         }
     }
@@ -88,24 +88,25 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         l++;
         pointsButton.setText(String.valueOf(l));
     }
-//    public void onClickDB(View view) {
-//        SQLiteDatabase db = getActivity().openOrCreateDatabase("employeedb",android.content.Context.MODE_PRIVATE,null);
-//       // TextView txt2 = (TextView)findViewById(R.id.textView);
-//        //txt2.setText("Database Created\n");
-//
-//        db.beginTransaction();
-//        try {
-//            db.execSQL("create table names (recid integer PRIMARY KEY autoincrement,FNAME text,MINIT text,LNAME text, SSN text, BDATE text, ADDRESS text, SEX text, SALARY text, SUPERSSN text,DNO text);");
-//           // txt2.append("New table created\n");
-//            db.execSQL("insert into names(FNAME, MINIT, LNAME, SSN, BDATE,ADDRESS, SEX, SALARY, SUPERSSN,DNO ) values ('Test','Test1','Test2','Test3','Test4','Test5','Test6','Test7','Test8','Test9')");
-//           // txt2.append("Data inserted\n");
-//            db.setTransactionSuccessful();
-//        } catch(SQLiteException e) {
-//            //txt2.append("Database roolback Here!!!!!!!!!!!\n");
-//
-//        }finally{
-//            db.endTransaction();
-//        }
-//    }
+    public void onClickDB(View view) {
+        SQLiteDatabase db = getActivity().openOrCreateDatabase("employeedb",android.content.Context.MODE_PRIVATE,null);
+       // TextView txt2 = (TextView)findViewById(R.id.textView);
+        //txt2.setText("Database Created\n");
+
+        db.beginTransaction();
+        try {
+            db.execSQL("create table names (recid integer PRIMARY KEY autoincrement,FNAME text,MINIT text,LNAME text, SSN text, BDATE text, ADDRESS text, SEX text, SALARY text, SUPERSSN text,DNO text);");
+           // txt2.append("New table created\n");
+            db.execSQL("insert into names(FNAME, MINIT, LNAME, SSN, BDATE,ADDRESS, SEX, SALARY, SUPERSSN,DNO ) values ('Test','Test1','Test2','Test3','Test4','Test5','Test6','Test7','Test8','Test9')");
+           // txt2.append("Data inserted\n");
+            db.setTransactionSuccessful();
+        } catch(SQLiteException e) {
+            Toast.makeText(getActivity(), "roolback",Toast.LENGTH_LONG).show();
+            //txt2.append("Database roolback Here!!!!!!!!!!!\n");
+
+        }finally{
+            db.endTransaction();
+        }
+    }
 }
 
