@@ -42,6 +42,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         pointsButton2.setOnClickListener(this);
         Button goalButton2 = (Button) rootView.findViewById(R.id.button4);
         goalButton2.setOnClickListener(this);
+        Button database = (Button) rootView.findViewById(R.id.button7);
+        database.setOnClickListener(this);
 
         return rootView;
     }
@@ -89,12 +91,15 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         pointsButton.setText(String.valueOf(l));
     }
     public void onClickDB(View view) {
-        SQLiteDatabase db = getActivity().openOrCreateDatabase("employeedb",android.content.Context.MODE_PRIVATE,null);
+        Button pointsButton = (Button) getView().findViewById(R.id.button7);
+
+        SQLiteDatabase db = getActivity().openOrCreateDatabase("GAAdb", android.content.Context.MODE_PRIVATE, null);
+        Toast.makeText(getActivity(), "database created",Toast.LENGTH_LONG).show();
        // TextView txt2 = (TextView)findViewById(R.id.textView);
         //txt2.setText("Database Created\n");
 
-        db.beginTransaction();
-        try {
+      //  db.beginTransaction();
+        /*try {
             db.execSQL("create table names (recid integer PRIMARY KEY autoincrement,FNAME text,MINIT text,LNAME text, SSN text, BDATE text, ADDRESS text, SEX text, SALARY text, SUPERSSN text,DNO text);");
            // txt2.append("New table created\n");
             db.execSQL("insert into names(FNAME, MINIT, LNAME, SSN, BDATE,ADDRESS, SEX, SALARY, SUPERSSN,DNO ) values ('Test','Test1','Test2','Test3','Test4','Test5','Test6','Test7','Test8','Test9')");
@@ -106,7 +111,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
         }finally{
             db.endTransaction();
-        }
+        }*/
     }
 }
 
