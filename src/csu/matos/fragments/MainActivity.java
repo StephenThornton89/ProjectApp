@@ -38,9 +38,10 @@ public class MainActivity extends Activity {
 		settings = actionBar.newTab().setText("Settings");
 
 		// Setting tab listeners.
-		stats.setTabListener(new TabListener(statsFragmentTab));
-		timer.setTabListener(new TabListener(timerFragmentTab));
-		settings.setTabListener(new TabListener(settingsFragmentTab));
+		//ActionBar.Tab aTab= actionBar.newTab().setText("Tab A").setTabListener(new TabListener<AFragment>(this, "AFrag", AFragment.class));
+		//stats.setTabListener(new TabListener<Fragment>(this, "Stats", statsFragmentTab));
+		//timer.setTabListener(new TabListener(timerFragmentTab));
+		//settings.setTabListener(new TabListener(settingsFragmentTab));
 
 		// Adding tabs to the ActionBar.
 		actionBar.addTab(stats);
