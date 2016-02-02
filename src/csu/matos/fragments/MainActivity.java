@@ -5,11 +5,13 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 
+import static android.app.ActionBar.*;
+
 
 public class MainActivity extends Activity {
 
 	// Declaring our tabs and the corresponding fragments.
-	ActionBar.Tab stats, timer, settings;
+	Tab stats, timer, settings;
 	Fragment statsFragmentTab = new StatsFragmentTab();
 	Fragment timerFragmentTab = new TimerFragmentTab();
 	Fragment settingsFragmentTab = new SettingsFragmentTab();
@@ -30,7 +32,7 @@ public class MainActivity extends Activity {
 		actionBar.setDisplayShowTitleEnabled(false);
 
 		// Creating ActionBar tabs.
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		actionBar.setNavigationMode(NAVIGATION_MODE_TABS);
 
 		// Setting custom tab icons.
 		stats = actionBar.newTab().setText("Stats");
@@ -38,14 +40,16 @@ public class MainActivity extends Activity {
 		settings = actionBar.newTab().setText("Settings");
 
 		// Setting tab listeners.
-		//ActionBar.Tab aTab= actionBar.newTab().setText("Tab A").setTabListener(new TabListener<AFragment>(this, "AFrag", AFragment.class));
+		Tab stats1= actionBar.newTab().setText("Stats").setTabListener(new TabListener<StatsFragmentTab>(this, "StatsFrag", StatsFragmentTab.class));
+		Tab timer1= actionBar.newTab().setText("Timer").setTabListener(new TabListener<TimerFragmentTab>(this, "TimerFrag", TimerFragmentTab.class));
+		Tab settings1= actionBar.newTab().setText("Settings").setTabListener(new TabListener<SettingsFragmentTab>(this, "SettingsFrag", SettingsFragmentTab.class));
 		//stats.setTabListener(new TabListener<Fragment>(this, "Stats", statsFragmentTab));
 		//timer.setTabListener(new TabListener(timerFragmentTab));
 		//settings.setTabListener(new TabListener(settingsFragmentTab));
 
 		// Adding tabs to the ActionBar.
-		actionBar.addTab(stats);
-		actionBar.addTab(timer);
-		actionBar.addTab(settings);
+		actionBar.addTab(stats1);
+		actionBar.addTab(timer1);
+		actionBar.addTab(settings1);
 	}
 }

@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class TabListener <T extends Fragment> implements ActionBar.TabListener {
 
@@ -17,20 +18,19 @@ public class TabListener <T extends Fragment> implements ActionBar.TabListener {
 
 
     // The contructor.
-    public TabListener(Activity activity, String tag, Class<T> clz, Fragment fragment) {
-        this.mFragment = fragment;
+    public TabListener(Activity activity, String tag, Class<T> clz) {
+        //this.mFragment = fragment;
         mActivity = activity;
         mTag = tag;
         mClass = clz;
     }
-
-
 
     // When a tab is tapped, the FragmentTransaction replaces
     // the content of our main layout with the specified fragment;
     // that's why we declared an id for the main layout.
     @Override
     public void onTabSelected(Tab tab, FragmentTransaction ft) {
+        Toast.makeText(mActivity, "selected", Toast.LENGTH_LONG).show();
         //ft.replace(R.id.activity_main, fragment);
         if (mFragment == null) {
             mFragment = Fragment.instantiate(mActivity, mClass.getName());
