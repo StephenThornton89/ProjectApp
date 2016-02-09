@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		//screen rotate set to portrait
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		// Asking for the default ActionBar element that our platform supports.
 		ActionBar actionBar = getActionBar();
