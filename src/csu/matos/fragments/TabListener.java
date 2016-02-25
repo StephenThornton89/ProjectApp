@@ -1,12 +1,10 @@
 package csu.matos.fragments;
 
+import android.app.*;
 import android.app.ActionBar.*;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.widget.Toast;
+
 
 public class TabListener <T extends Fragment> implements ActionBar.TabListener {
 
@@ -18,7 +16,8 @@ public class TabListener <T extends Fragment> implements ActionBar.TabListener {
 
 
     // The contructor.
-    public TabListener(Activity activity, String tag, Class<T> clz) {
+    public TabListener(Activity activity, String tag, Class<T> clz)  {
+        //super(activity.getSupportFragmentManager());
         //this.mFragment = fragment;
         mActivity = activity;
         mTag = tag;

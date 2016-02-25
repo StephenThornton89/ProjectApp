@@ -90,5 +90,11 @@
             android:layout_marginBottom="34dp" android:textColor="#ff010101"
             android:onClick="onClickDB"
             android:layout_alignParentBottom="true" android:layout_alignEnd="@+id/textView4"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView8" android:layout_above="@+id/editText" android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

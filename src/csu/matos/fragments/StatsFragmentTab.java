@@ -21,6 +21,7 @@ import java.io.IOException;
 public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
     int i=0,k=0,j=0,l=0;
+    TextView b_received;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.stats_layout, container, false);
         Button GoalsButton = (Button) rootView.findViewById(R.id.button2);
         GoalsButton.setOnClickListener(this);
@@ -44,8 +46,15 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         goalButton2.setOnClickListener(this);
         Button database = (Button) rootView.findViewById(R.id.button7);
         database.setOnClickListener(this);
+        b_received = (TextView)rootView.findViewById(R.id.textView8);
+        String myTag = getTag();
+
+        ((MainActivity)getActivity()).setTabFragmentB(myTag);
 
         return rootView;
+    }
+    public void b_updateText(String t){
+        b_received.setText(t);
     }
 
     @Override

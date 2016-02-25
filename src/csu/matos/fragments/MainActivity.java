@@ -16,7 +16,15 @@ public class MainActivity extends Activity {
 	Fragment statsFragmentTab = new StatsFragmentTab();
 	Fragment timerFragmentTab = new TimerFragmentTab();
 	Fragment settingsFragmentTab = new SettingsFragmentTab();
+	String TabFragmentB;
 
+	public void setTabFragmentB(String t){
+		TabFragmentB = t;
+	}
+
+	public String getTabFragmentB(){
+		return TabFragmentB;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

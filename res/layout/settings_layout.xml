@@ -7,8 +7,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText3"
             android:hint="Enter Game Code"
-            android:background="#fffee8ff" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
-            android:layout_marginTop="70dp" android:layout_alignEnd="@+id/spinner"/>
+            android:background="#fffee8ff"
+            android:layout_marginTop="42dp" android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView6"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,7 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/spinner" android:layout_below="@+id/textView6" android:layout_alignStart="@+id/textView6"
-            android:layout_marginTop="36dp" android:spinnerMode="dropdown" android:dropDownSelector="red"/>
+            android:layout_marginTop="36dp" android:spinnerMode="dropdown" android:entries="@array/county_arrays"
+            android:prompt="@string/country_prompt"
+            android:background="#ffffffff"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Team B Colour"
               android:id="@+id/textView7" android:layout_marginTop="32dp" android:textColor="#ff030303"
               android:background="#ffffffff" android:layout_below="@+id/spinner"
@@ -30,5 +33,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/spinner2" android:layout_below="@+id/textView7" android:layout_alignStart="@+id/textView7"
-            android:layout_marginTop="44dp" android:spinnerMode="dropdown"/>
+            android:layout_marginTop="44dp" android:spinnerMode="dropdown"  android:entries="@array/county_arrays" android:background="#ffffffff"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Stats"
+            android:id="@+id/button8" android:layout_below="@+id/spinner2" android:layout_alignStart="@+id/spinner2"
+            android:layout_marginTop="44dp" android:background="#ff937cff"/>
 </RelativeLayout>
