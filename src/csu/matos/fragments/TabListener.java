@@ -35,7 +35,7 @@ public class TabListener <T extends Fragment> implements ActionBar.TabListener {
             mFragment = Fragment.instantiate(mActivity, mClass.getName());
             ft.add(android.R.id.content, mFragment, mTag);
         } else { // If it exists, we simply attach it
-            ft.attach(mFragment);
+            ft.show(mFragment);
         }
     }
 //content
@@ -44,7 +44,7 @@ public class TabListener <T extends Fragment> implements ActionBar.TabListener {
     public void onTabUnselected(Tab tab, FragmentTransaction ft) {
         // ft.remove(fragment);
         if (mFragment != null) {
-            ft.detach(mFragment);
+            ft.hide(mFragment);
         }
     }
 
