@@ -1,6 +1,8 @@
 package csu.matos.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.app.*;
@@ -108,6 +110,17 @@ public class TimerFragmentTab extends Fragment implements View.OnClickListener{
                         seconds++;
                     }
                     handler.postDelayed(this, 1000);
+                    //Half time notification
+                     if(minutes==35){
+                         // Get instance of Vibrator from current Context
+                         Vibrator vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                         vib.vibrate(2000);
+                    }
+                     //Full time notification
+                    else if (minutes==70){
+                         Vibrator vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                         vib.vibrate(2000);
+                     }
                 }
             });
         }
