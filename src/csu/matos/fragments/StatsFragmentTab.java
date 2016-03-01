@@ -10,6 +10,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
+
 import android.util.Xml;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,7 +22,8 @@ import java.io.IOException;
 public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
     int i=0,k=0,j=0,l=0;
-    TextView b_received;
+    TextView input1;
+    TextView input2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         if (savedInstanceState != null) {
 
         }
+
     }
 
     @Override
@@ -46,15 +49,16 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         goalButton2.setOnClickListener(this);
         Button database = (Button) rootView.findViewById(R.id.button7);
         database.setOnClickListener(this);
-        b_received = (TextView)rootView.findViewById(R.id.textView8);
-        String myTag = getTag();
+        Button updateTeams = (Button) rootView.findViewById(R.id.button9);
+        updateTeams.setOnClickListener(this);
+         input1 = (TextView)rootView.findViewById(R.id.textView);
+        input2 = (TextView)rootView.findViewById(R.id.textView2);
+        //b_received = (TextView)rootView.findViewById(R.id.textView8);
+        //String myTag = getTag();
 
-        ((MainActivity)getActivity()).setTabFragmentB(myTag);
+        //((MainActivity)getActivity()).setTabFragmentB(myTag);
 
         return rootView;
-    }
-    public void b_updateText(String t){
-        b_received.setText(t);
     }
 
     @Override
@@ -75,6 +79,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 break;
             case R.id.button7:
                 onClickDB(v);
+            case R.id.button9:
+                onClickupdateteams(v);
                 break;
         }
     }
@@ -118,6 +124,15 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         }finally{
             db.endTransaction();
         }
+    }
+    public void onClickupdateteams(View view) {
+           String team1 =((EditText)getActivity().findViewById(R.id.editText3)).getText().toString();
+           input1.setText(team1);
+            String team2 =((EditText)getActivity().findViewById(R.id.editText4)).getText().toString();
+            input2.setText(team2);
+        Toast.makeText(getActivity(),
+                "text sent to Stats tabs:\n ",
+                Toast.LENGTH_LONG).show();
     }
 }
 
