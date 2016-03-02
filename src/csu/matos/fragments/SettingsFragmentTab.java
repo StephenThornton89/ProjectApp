@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class SettingsFragmentTab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.settings_layout, container, false);
         return rootView;
     }

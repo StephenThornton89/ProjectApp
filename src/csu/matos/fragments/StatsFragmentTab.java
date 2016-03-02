@@ -49,7 +49,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         database.setOnClickListener(this);
         Button updateTeams = (Button) rootView.findViewById(R.id.button9);
         updateTeams.setOnClickListener(this);
-         input1 = (TextView)rootView.findViewById(R.id.textView);
+        input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
 
         return rootView;
@@ -104,7 +104,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
         SQLiteDatabase db = getActivity().openOrCreateDatabase("GAAdb", android.content.Context.MODE_PRIVATE, null);
         Toast.makeText(getActivity(), "database created",Toast.LENGTH_LONG).show();
-       // TextView txt2 = (TextView)findViewById(R.id.textView);
+        // TextView txt2 = (TextView)findViewById(R.id.textView);
         //txt2.setText("Database Created\n");
 
         db.beginTransaction();
