@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.app.Fragment;
 import android.widget.*;
-import android.widget.EditText;
-import android.widget.Button;
-import android.widget.Toast;
+
 
 public class SettingsFragmentTab extends Fragment {
     @Override
