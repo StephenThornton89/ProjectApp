@@ -25,7 +25,7 @@ public class TabListener <T extends Fragment> implements ActionBar.TabListener {
     // the content of our main layout with the specified fragment;
     @Override
     public void onTabSelected(Tab tab, FragmentTransaction ft) {
-        Toast.makeText(mActivity, "selected", Toast.LENGTH_LONG).show();
+       // Toast.makeText(mActivity, "selected", Toast.LENGTH_LONG).show();
         if (mFragment == null) {
             mFragment = Fragment.instantiate(mActivity, mClass.getName());
             ft.add(android.R.id.content, mFragment, mTag);

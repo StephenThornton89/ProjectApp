@@ -19,5 +19,4 @@ public class SettingsFragmentTab extends Fragment {
         View rootView = inflater.inflate(R.layout.settings_layout, container, false);
         return rootView;
     }
-
 }
