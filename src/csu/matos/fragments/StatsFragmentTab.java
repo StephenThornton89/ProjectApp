@@ -51,10 +51,6 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         updateTeams.setOnClickListener(this);
          input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
-        //b_received = (TextView)rootView.findViewById(R.id.textView8);
-        //String myTag = getTag();
-
-        //((MainActivity)getActivity()).setTabFragmentB(myTag);
 
         return rootView;
     }

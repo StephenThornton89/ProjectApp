@@ -118,6 +118,7 @@ public class TimerFragmentTab extends Fragment implements View.OnClickListener{
                     }
                      //Full time notification
                     else if (minutes==70){
+                         // Get instance of Vibrator from current Context
                          Vibrator vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
                          vib.vibrate(2000);
                      }

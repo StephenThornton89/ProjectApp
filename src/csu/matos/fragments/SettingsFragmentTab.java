@@ -13,14 +13,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class SettingsFragmentTab extends Fragment {
-    TextView A_input;
-    Button A_enter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.settings_layout, container, false);
-        A_input = (TextView)rootView.findViewById(R.id.textView9);
-
         return rootView;
     }
 
