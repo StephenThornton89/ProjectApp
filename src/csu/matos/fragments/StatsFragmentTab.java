@@ -1,20 +1,18 @@
 package csu.matos.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.Fragment;
-import android.widget.Button;
+import android.widget.*;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
 
 import android.util.Xml;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
@@ -126,13 +124,57 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         }
     }
     public void onClickupdateteams(View view) {
-           String team1 =((EditText)getActivity().findViewById(R.id.editText3)).getText().toString();
-           input1.setText(team1);
-            String team2 =((EditText)getActivity().findViewById(R.id.editText4)).getText().toString();
-            input2.setText(team2);
-        Toast.makeText(getActivity(),
-                "text sent to Stats tabs:\n ",
-                Toast.LENGTH_LONG).show();
+        String team1 =((EditText)getActivity().findViewById(R.id.editText3)).getText().toString();
+        input1.setText(team1);
+        String team2 =((EditText)getActivity().findViewById(R.id.editText4)).getText().toString();
+        input2.setText(team2);
+        Spinner sp1 = ((Spinner)getActivity().findViewById(R.id.spinner));
+        String str = sp1.getSelectedItem().toString();
+        if(str.equals("Blue"))
+        {
+            Toast.makeText(getActivity(),
+                    "text sent to Stats tabs:\n "+ str,
+                    Toast.LENGTH_LONG).show();
+            input1.setBackgroundColor(Color.BLUE);
+        }
+        else if (str.equals("Red"))
+        {
+            input1.setBackgroundColor(Color.RED);
+        }
+        else if (str.equals("Maroon"))
+        {
+            input1.setBackgroundColor(0xFF830B39);
+        }
+        else if (str.equals("Black"))
+        {
+            input1.setBackgroundColor(Color.BLACK);
+        }
+        else if (str.equals("Green"))
+        {
+            input1.setBackgroundColor(Color.GREEN);
+        }
+        Spinner sp2 = ((Spinner)getActivity().findViewById(R.id.spinner2));
+        String str2 = sp2.getSelectedItem().toString();
+        if(str2.equals("Blue"))
+        {
+            input2.setBackgroundColor(Color.BLUE);
+        }
+        else if (str2.equals("Red"))
+        {
+            input2.setBackgroundColor(Color.RED);
+        }
+        else if (str2.equals("Maroon"))
+        {
+            input2.setBackgroundColor(0xFF830B39);
+        }
+        else if (str2.equals("Black"))
+        {
+            input2.setBackgroundColor(Color.BLACK);
+        }
+        else if (str2.equals("Green"))
+        {
+            input2.setBackgroundColor(Color.GREEN);
+        }
     }
 }
 
