@@ -1,13 +1,11 @@
 package csu.matos.fragments;
 
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.app.Fragment;
-import android.widget.*;
+
 
 
 public class SettingsFragmentTab extends Fragment {
