@@ -1,5 +1,6 @@
 package csu.matos.fragments;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.app.Fragment;
 import android.widget.*;
+import android.view.ViewGroup.LayoutParams;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.widget.PopupWindow;
 
 
 import android.util.Xml;
@@ -49,6 +52,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         database.setOnClickListener(this);
         Button updateTeams = (Button) rootView.findViewById(R.id.button9);
         updateTeams.setOnClickListener(this);
+        Button Stats1 = (Button) rootView.findViewById(R.id.button6);
+        Stats1.setOnClickListener(this);
         input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
 
@@ -71,6 +76,9 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
             case R.id.button4:
                 onClickPlusPoint2(v);
                 break;
+            case R.id.button6:
+                onClickStats1(v);
+                break;
             case R.id.button7:
                 onClickDB(v);
             case R.id.button9:
@@ -78,6 +86,24 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+    public void onClickStats1(View view) {
+        Toast.makeText(getActivity(), "STATS 1",Toast.LENGTH_LONG).show();
+        View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup, null);
+        PopupWindow popupWindow = new PopupWindow(popupView,
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
+        btnDismiss.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        Button StatsButton = (Button) getView().findViewById(R.id.button6);
+        popupWindow.showAsDropDown(StatsButton, 50, -30);
+    }
+
+
     public void onClickPlusGoal1(View view) {
         Button GoalsButton = (Button) getView().findViewById(R.id.button2);
         i++;
