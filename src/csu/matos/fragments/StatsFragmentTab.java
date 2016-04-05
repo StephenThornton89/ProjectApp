@@ -4,6 +4,7 @@ package csu.matos.fragments;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,14 +29,14 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     TextView input2;
     RadioButton rb;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-
-        }
-
-    }
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        if (savedInstanceState != null) {
+//
+//        }
+//
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -124,12 +125,13 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 RadioButton p1 = ((RadioButton)popupView.findViewById(R.id.radioButton7));
                 RadioButton p2 = ((RadioButton)popupView.findViewById(R.id.radioButton8));
                 TextView prs1 = (TextView)  getView().findViewById(R.id.textView11);
+                prs1.setMovementMethod(new ScrollingMovementMethod());
                 //Toast.makeText(getActivity(), "" + rb.getText(),Toast.LENGTH_LONG).show();
                 if(p1.isChecked()){
-                    prs1.setText(input1.getText()+": "+p1.getText());
+                    prs1.append(input1.getText() + ": " + p1.getText() + "score: " + i + "-" + k + " ");
                 }
                 else if (p2.isChecked()){
-                    prs1.append("\n"+input1.getText()+": "+p2.getText());
+                    prs1.append("\n" + input1.getText() + ": " + p2.getText());
                 }
                 popupWindow.dismiss();
                // RadioButton rb = (RadioButton) getView().findViewById(R.id.radioButton);

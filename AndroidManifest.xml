@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="csu.matos.fragments.MainActivity"
-            android:label="GAA Statistics" >
+            android:label="GAA Statistics"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
