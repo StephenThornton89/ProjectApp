@@ -122,11 +122,14 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 RadioButton p1 = ((RadioButton)popupView.findViewById(R.id.radioButton7));
+                RadioButton p2 = ((RadioButton)popupView.findViewById(R.id.radioButton8));
+                TextView prs1 = (TextView)  getView().findViewById(R.id.textView11);
                 //Toast.makeText(getActivity(), "" + rb.getText(),Toast.LENGTH_LONG).show();
                 if(p1.isChecked()){
-                    Toast.makeText(getActivity(), "Toast",Toast.LENGTH_LONG).show();
-                    TextView prs1 = (TextView)  getView().findViewById(R.id.textView11);
-                    prs1.setText("Welcome");
+                    prs1.setText(input1.getText()+": "+p1.getText());
+                }
+                else if (p2.isChecked()){
+                    prs1.append("\n"+input1.getText()+": "+p2.getText());
                 }
                 popupWindow.dismiss();
                // RadioButton rb = (RadioButton) getView().findViewById(R.id.radioButton);
