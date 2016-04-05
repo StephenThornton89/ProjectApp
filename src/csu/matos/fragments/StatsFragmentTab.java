@@ -54,6 +54,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         updateTeams.setOnClickListener(this);
         Button Stats1 = (Button) rootView.findViewById(R.id.button6);
         Stats1.setOnClickListener(this);
+        Button Stats2 = (Button) rootView.findViewById(R.id.button5);
+        Stats2.setOnClickListener(this);
         input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
 
@@ -76,8 +78,11 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
             case R.id.button4:
                 onClickPlusPoint2(v);
                 break;
-            case R.id.button6:
+            case R.id.button5:
                 onClickStats1(v);
+                break;
+            case R.id.button6:
+                onClickStats2(v);
                 break;
             case R.id.button7:
                 onClickDB(v);
@@ -100,7 +105,23 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
             }
         });
         Button StatsButton = (Button) getView().findViewById(R.id.button6);
-        popupWindow.showAsDropDown(StatsButton, 20, -30);
+        popupWindow.showAsDropDown(StatsButton, 0, -300);
+    }
+    public void onClickStats2(View view) {
+        Toast.makeText(getActivity(), "STATS 2",Toast.LENGTH_LONG).show();
+        View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup2, null);
+        PopupWindow popupWindow = new PopupWindow(popupView,
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
+        btnDismiss.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        Button StatsButton = (Button) getView().findViewById(R.id.button6);
+        popupWindow.showAsDropDown(StatsButton, 0, -300);
     }
 
 
