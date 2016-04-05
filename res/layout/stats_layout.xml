@@ -84,4 +84,13 @@
             android:text="Update Teams"
             android:id="@+id/button9" android:layout_alignParentTop="true" android:layout_alignParentEnd="true"
             android:onClick="onClickupdateteams"/>
+    <TextView
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:text="stats"
+            android:id="@+id/textView11"
+            android:background="#ffffffff"
+            android:layout_below="@+id/button5"
+            android:layout_alignParentStart="true" android:layout_alignParentEnd="true"
+            android:layout_above="@+id/button7"/>
 </RelativeLayout>

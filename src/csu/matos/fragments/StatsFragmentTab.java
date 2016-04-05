@@ -1,7 +1,8 @@
 package csu.matos.fragments;
 
-import android.content.Context;
+//import android.content.Context;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,22 +10,23 @@ import android.view.ViewGroup;
 import android.app.Fragment;
 import android.widget.*;
 import android.view.ViewGroup.LayoutParams;
-import android.database.SQLException;
+//import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.widget.PopupWindow;
 
 
-import android.util.Xml;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import java.io.IOException;
+//import android.util.Xml;
+//import org.xmlpull.v1.XmlPullParser;
+//import org.xmlpull.v1.XmlPullParserException;
+//import java.io.IOException;
 
 public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
     int i=0,k=0,j=0,l=0;
     TextView input1;
     TextView input2;
+    RadioButton rb;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         Stats2.setOnClickListener(this);
         input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
+        rb = (RadioButton) rootView.findViewById(R.id.radioButton7);
+
 
         return rootView;
     }
@@ -117,9 +121,20 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
             @Override
             public void onClick(View v) {
+                RadioButton p1 = ((RadioButton)popupView.findViewById(R.id.radioButton7));
+                //Toast.makeText(getActivity(), "" + rb.getText(),Toast.LENGTH_LONG).show();
+                if(p1.isChecked()){
+                    Toast.makeText(getActivity(), "Toast",Toast.LENGTH_LONG).show();
+                    TextView prs1 = (TextView)  getView().findViewById(R.id.textView11);
+                    prs1.setText("Welcome");
+                }
                 popupWindow.dismiss();
+               // RadioButton rb = (RadioButton) getView().findViewById(R.id.radioButton);
             }
         });
+        //RadioButton radioButton = (RadioButton) getView().findViewById(R.id.radioButton7);
+
+
         Button StatsButton = (Button) getView().findViewById(R.id.button6);
         popupWindow.showAsDropDown(StatsButton, 0, -300);
     }
