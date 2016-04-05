@@ -46,10 +46,10 @@
             android:text="Turnover"
             android:id="@+id/radioButton6" android:checked="false"/>
     <Button
-            android:id="@+id/dismiss"
+            android:id="@+id/enter1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dismiss" />
+            android:text="Enter" />
     <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

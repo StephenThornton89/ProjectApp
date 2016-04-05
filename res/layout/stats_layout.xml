@@ -82,7 +82,8 @@
             android:layout_height="wrap_content"
             android:text="Update Teams"
             android:id="@+id/button9" android:layout_alignParentTop="true" android:layout_alignParentEnd="true"
-            android:onClick="onClickupdateteams"/>
+            android:onClick="onClickupdateteams" android:backgroundTint="@android:color/holo_blue_dark"
+            android:textColor="#fffff500"/>
     <TextView
             android:layout_width="40dp"
             android:layout_height="20dp"

@@ -2,7 +2,7 @@ package csu.matos.fragments;
 
 //import android.content.Context;
 import android.graphics.Color;
-import android.location.Location;
+//import android.location.Location;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -27,16 +27,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     int i=0,k=0,j=0,l=0;
     TextView input1;
     TextView input2;
+    TextView time_view1;
     RadioButton rb;
-
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (savedInstanceState != null) {
-//
-//        }
-//
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +53,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         Stats2.setOnClickListener(this);
         input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
+
         rb = (RadioButton) rootView.findViewById(R.id.radioButton7);
 
 
@@ -71,18 +64,19 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.button2:
-                onClickPlusGoal1(v);
-                break;
             case R.id.button:
+                onClickPlusPoint2(v);
+                break;
+            case R.id.button2:
                 onClickPlusPoint1(v);
+                break;
+            case R.id.button4:
+                onClickPlusGoal1(v);
                 break;
             case R.id.button3:
                 onClickPlusGoal2(v);
                 break;
-            case R.id.button4:
-                onClickPlusPoint2(v);
-                break;
+
             case R.id.button5:
                 onClickStats1(v);
                 break;
@@ -101,8 +95,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup, null);
         PopupWindow popupWindow = new PopupWindow(popupView,
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
-        btnDismiss.setOnClickListener(new Button.OnClickListener() {
+        Button enter = (Button) popupView.findViewById(R.id.enter1);
+        enter.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -110,34 +104,50 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
             }
         });
         Button StatsButton = (Button) getView().findViewById(R.id.button6);
-        popupWindow.showAsDropDown(StatsButton, 0, -300);
+        popupWindow.showAsDropDown(StatsButton, 500, -300);
     }
+
     public void onClickStats2(View view) {
         Toast.makeText(getActivity(), "STATS 2",Toast.LENGTH_LONG).show();
         View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup2, null);
         PopupWindow popupWindow = new PopupWindow(popupView,
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
-        btnDismiss.setOnClickListener(new Button.OnClickListener() {
+        Button enter = (Button) popupView.findViewById(R.id.enter2);
+        enter.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                RadioButton p1 = ((RadioButton)popupView.findViewById(R.id.radioButton7));
-                RadioButton p2 = ((RadioButton)popupView.findViewById(R.id.radioButton8));
-                TextView prs1 = (TextView)  getView().findViewById(R.id.textView11);
+                RadioButton r1 = ((RadioButton)popupView.findViewById(R.id.radioButton7));
+                RadioButton r2 = ((RadioButton)popupView.findViewById(R.id.radioButton8));
+                RadioButton r3 = ((RadioButton)popupView.findViewById(R.id.radioButton9));
+                RadioButton r4 = ((RadioButton)popupView.findViewById(R.id.radioButton10));
+                RadioButton r5 = ((RadioButton)popupView.findViewById(R.id.radioButton11));
+                RadioButton r6 = ((RadioButton)popupView.findViewById(R.id.radioButton12));
+                TextView prs1 = (TextView)getView().findViewById(R.id.textView11);
+                TextView timeView = (TextView) view.findViewById(R.id.time_view);
                 prs1.setMovementMethod(new ScrollingMovementMethod());
-                //Toast.makeText(getActivity(), "" + rb.getText(),Toast.LENGTH_LONG).show();
-                if(p1.isChecked()){
-                    prs1.append(input1.getText() + ": " + p1.getText() + "score: " + i + "-" + k + " ");
+                if(r1.isChecked()){
+                    prs1.append(input1.getText() + ": " + r1.getText() + " score: " + i + "-" + k + " Time: "+ timeView + "\n");
                 }
-                else if (p2.isChecked()){
-                    prs1.append("\n" + input1.getText() + ": " + p2.getText());
+                else if (r2.isChecked()){
+                    prs1.append(input1.getText() + ": " + r2.getText() + " score: " + i + "-" + k + "\n");
+                }
+                else if (r3.isChecked()){
+                    prs1.append(input1.getText() + ": " + r3.getText() + " score: " + i + "-" + k + "\n");
+                }
+                else if (r4.isChecked()){
+                    prs1.append(input1.getText() + ": " + r4.getText() + " score: " + i + "-" + k + "\n");
+                }
+                else if (r5.isChecked()){
+                    prs1.append(input1.getText() + ": " + r5.getText() + " score: " + i + "-" + k + "\n");
+                }
+                else if (r6.isChecked()){
+                    prs1.append(input1.getText() + ": " + r6.getText() + " score: " + i + "-" + k + "\n");
                 }
                 popupWindow.dismiss();
-               // RadioButton rb = (RadioButton) getView().findViewById(R.id.radioButton);
+
             }
         });
-        //RadioButton radioButton = (RadioButton) getView().findViewById(R.id.radioButton7);
 
 
         Button StatsButton = (Button) getView().findViewById(R.id.button6);
@@ -146,15 +156,17 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
 
     public void onClickPlusGoal1(View view) {
-        Button GoalsButton = (Button) getView().findViewById(R.id.button2);
+        Button GoalsButton = (Button) getView().findViewById(R.id.button4);
         i++;
         GoalsButton.setText(String.valueOf(i));
     }
+
     public void onClickPlusPoint1(View view) {
-        Button pointsButton = (Button) getView().findViewById(R.id.button);
+        Button pointsButton = (Button) getView().findViewById(R.id.button2);
         k++;
         pointsButton.setText(String.valueOf(k));
     }
+
     public void onClickPlusGoal2(View view) {
         Button GoalsButton = (Button) getView().findViewById(R.id.button3);
         j++;
@@ -162,10 +174,11 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     }
 
     public void onClickPlusPoint2(View view) {
-        Button pointsButton = (Button) getView().findViewById(R.id.button4);
+        Button pointsButton = (Button) getView().findViewById(R.id.button);
         l++;
         pointsButton.setText(String.valueOf(l));
     }
+
     public void onClickDB(View view) {
         //Button DBbutton = (Button) getView().findViewById(R.id.button7);
 
