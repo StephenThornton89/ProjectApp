@@ -3,32 +3,58 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:orientation="vertical"
-              android:background="@android:color/background_light">
+              android:background="@android:color/background_light" android:weightSum="1">
 <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="158dp"
+        android:layout_height="266dp"
         android:orientation="vertical"
         android:layout_margin="1dp"
         android:background="@android:color/darker_gray">
     >
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Stats" />
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attack"
+            android:id="@+id/radioButton" android:checked="false"/>
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shot"
+            android:id="@+id/radioButton2" android:checked="false"/>
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Free kick"
+            android:id="@+id/radioButton3" android:checked="false"/>
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kickout"
+            android:id="@+id/radioButton4" android:checked="false"/>
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kickout won"
+            android:id="@+id/radioButton5" android:checked="false"/>
+    <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turnover"
+            android:id="@+id/radioButton6" android:checked="false"/>
+    <Button
+            android:id="@+id/dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dismiss" />
     <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="20dp">
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="It's a PopupWindow" />
-        <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher" />
-        <Button
-                android:id="@+id/dismiss"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Dismiss" />
     </LinearLayout>
 </LinearLayout>
 </LinearLayout>

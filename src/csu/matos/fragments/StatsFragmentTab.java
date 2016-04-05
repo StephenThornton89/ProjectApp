@@ -100,7 +100,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
             }
         });
         Button StatsButton = (Button) getView().findViewById(R.id.button6);
-        popupWindow.showAsDropDown(StatsButton, 50, -30);
+        popupWindow.showAsDropDown(StatsButton, 20, -30);
     }
 
 
