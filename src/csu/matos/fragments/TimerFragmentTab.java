@@ -18,6 +18,7 @@ public class TimerFragmentTab extends Fragment implements View.OnClickListener{
     //Is the stopwatch running?
     private boolean running;
     private boolean wasRunning;
+    TextView timeView2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,14 +99,17 @@ public class TimerFragmentTab extends Fragment implements View.OnClickListener{
 
     private void runTimer(View view) {
         final TextView timeView = (TextView) view.findViewById(R.id.time_view);
+
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
                 int minutes = (seconds % 3600) / 60;
                 int secs = seconds % 60;
+                timeView2 = (TextView) getActivity().findViewById(R.id.textView13);
                 String time = String.format("%02d:%02d", minutes, secs);
                 timeView.setText(time);
+                timeView2.setText(time);
                 if (running) {
                     seconds++;
                 }

@@ -150,11 +150,12 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 RadioButton r5 = ((RadioButton)popupView.findViewById(R.id.radioButton11));
                 RadioButton r6 = ((RadioButton)popupView.findViewById(R.id.radioButton12));
                 TextView prs1 = (TextView)getView().findViewById(R.id.textView11);
-                TextView timeView = (TextView) getView().findViewById(R.id.time_view);
-                Toast.makeText(getActivity(), timeView.getText(),Toast.LENGTH_LONG).show();
+                String team1 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
+
+                //Toast.makeText(getActivity(),timeView.getText(),Toast.LENGTH_LONG).show();
                 prs1.setMovementMethod(new ScrollingMovementMethod());
                 if(r1.isChecked()){
-                    prs1.append(input1.getText() + ": " + r1.getText() + " score: " + i + "-" + k + " Time: " + "\n");
+                    prs1.append(input1.getText() + ": " + r1.getText() + " score: " + i + "-" + k + " Time: " +team1 + "\n");
                 }
                 else if (r2.isChecked()){
                     prs1.append(input1.getText() + ": " + r2.getText() + " score: " + i + "-" + k + "\n");
