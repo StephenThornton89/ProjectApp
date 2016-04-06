@@ -27,7 +27,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     int i=0,k=0,j=0,l=0;
     TextView input1;
     TextView input2;
-    TextView time_view1;
+   // TextView timeView;
     RadioButton rb;
 
     @Override
@@ -53,7 +53,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         Stats2.setOnClickListener(this);
         input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
-
+        //timeView = (TextView) rootView.findViewById(R.id.time_view);
         rb = (RadioButton) rootView.findViewById(R.id.radioButton7);
 
 
@@ -92,14 +92,40 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     }
     public void onClickStats1(View view) {
         Toast.makeText(getActivity(), "STATS 1",Toast.LENGTH_LONG).show();
-        View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup, null);
-        PopupWindow popupWindow = new PopupWindow(popupView,
+        View popupView1 = getActivity().getLayoutInflater().inflate(R.layout.popup, null);
+        PopupWindow popupWindow = new PopupWindow(popupView1,
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        Button enter = (Button) popupView.findViewById(R.id.enter1);
+        Button enter = (Button) popupView1.findViewById(R.id.enter1);
         enter.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                RadioButton r1 = ((RadioButton)popupView1.findViewById(R.id.radioButton));
+                RadioButton r2 = ((RadioButton)popupView1.findViewById(R.id.radioButton2));
+                RadioButton r3 = ((RadioButton)popupView1.findViewById(R.id.radioButton3));
+                RadioButton r4 = ((RadioButton)popupView1.findViewById(R.id.radioButton4));
+                RadioButton r5 = ((RadioButton)popupView1.findViewById(R.id.radioButton5));
+                RadioButton r6 = ((RadioButton)popupView1.findViewById(R.id.radioButton6));
+                TextView prs1 = (TextView)getView().findViewById(R.id.textView11);
+                prs1.setMovementMethod(new ScrollingMovementMethod());
+                if(r1.isChecked()){
+                    prs1.append(input2.getText() + ": " + r1.getText() + " score: " + j + "-" + l + " Time: " + "\n");
+                }
+                else if (r2.isChecked()){
+                    prs1.append(input2.getText() + ": " + r2.getText() + " score: " + j + "-" + l + "\n");
+                }
+                else if (r3.isChecked()){
+                    prs1.append(input2.getText() + ": " + r3.getText() + " score: " + j + "-" + l + "\n");
+                }
+                else if (r4.isChecked()){
+                    prs1.append(input2.getText() + ": " + r4.getText() + " score: " + j + "-" + l + "\n");
+                }
+                else if (r5.isChecked()){
+                    prs1.append(input2.getText() + ": " + r5.getText() + " score: " + j + "-" + l + "\n");
+                }
+                else if (r6.isChecked()){
+                    prs1.append(input2.getText() + ": " + r6.getText() + " score: " + j + "-" + l + "\n");
+                }
                 popupWindow.dismiss();
             }
         });
@@ -124,10 +150,11 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 RadioButton r5 = ((RadioButton)popupView.findViewById(R.id.radioButton11));
                 RadioButton r6 = ((RadioButton)popupView.findViewById(R.id.radioButton12));
                 TextView prs1 = (TextView)getView().findViewById(R.id.textView11);
-                TextView timeView = (TextView) view.findViewById(R.id.time_view);
+                TextView timeView = (TextView) getView().findViewById(R.id.time_view);
+                Toast.makeText(getActivity(), timeView.getText(),Toast.LENGTH_LONG).show();
                 prs1.setMovementMethod(new ScrollingMovementMethod());
                 if(r1.isChecked()){
-                    prs1.append(input1.getText() + ": " + r1.getText() + " score: " + i + "-" + k + " Time: "+ timeView + "\n");
+                    prs1.append(input1.getText() + ": " + r1.getText() + " score: " + i + "-" + k + " Time: " + "\n");
                 }
                 else if (r2.isChecked()){
                     prs1.append(input1.getText() + ": " + r2.getText() + " score: " + i + "-" + k + "\n");
