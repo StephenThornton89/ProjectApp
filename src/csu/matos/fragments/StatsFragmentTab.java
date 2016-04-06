@@ -24,7 +24,7 @@ import android.widget.PopupWindow;
 
 public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
-    int i=0,k=0,j=0,l=0;
+    int i=0,k=0,j=0,l=0,a=1,b=1;
     TextView input1;
     TextView input2;
    // TextView timeView;
@@ -91,6 +91,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         }
     }
     public void onClickStats1(View view) {
+
         Toast.makeText(getActivity(), "STATS 1",Toast.LENGTH_LONG).show();
         View popupView1 = getActivity().getLayoutInflater().inflate(R.layout.popup, null);
         PopupWindow popupWindow = new PopupWindow(popupView1,
@@ -107,24 +108,26 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 RadioButton r5 = ((RadioButton)popupView1.findViewById(R.id.radioButton5));
                 RadioButton r6 = ((RadioButton)popupView1.findViewById(R.id.radioButton6));
                 TextView prs1 = (TextView)getView().findViewById(R.id.textView11);
+                String time2 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
                 prs1.setMovementMethod(new ScrollingMovementMethod());
                 if(r1.isChecked()){
-                    prs1.append(input2.getText() + ": " + r1.getText() + " score: " + j + "-" + l + " Time: " + "\n");
+                    prs1.append(input2.getText() + " | " + r1.getText()+" " + a + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time2 + "\n");
+                    a++;
                 }
                 else if (r2.isChecked()){
-                    prs1.append(input2.getText() + ": " + r2.getText() + " score: " + j + "-" + l + "\n");
+                    prs1.append(input2.getText() + " | " + r2.getText() + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
                 }
                 else if (r3.isChecked()){
-                    prs1.append(input2.getText() + ": " + r3.getText() + " score: " + j + "-" + l + "\n");
+                    prs1.append(input2.getText() + " | " + r3.getText() + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
                 }
                 else if (r4.isChecked()){
-                    prs1.append(input2.getText() + ": " + r4.getText() + " score: " + j + "-" + l + "\n");
+                    prs1.append(input2.getText() + " | " + r4.getText() + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
                 }
                 else if (r5.isChecked()){
-                    prs1.append(input2.getText() + ": " + r5.getText() + " score: " + j + "-" + l + "\n");
+                    prs1.append(input2.getText() + " | " + r5.getText() + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
                 }
                 else if (r6.isChecked()){
-                    prs1.append(input2.getText() + ": " + r6.getText() + " score: " + j + "-" + l + "\n");
+                    prs1.append(input2.getText() + " | " + r6.getText() + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
                 }
                 popupWindow.dismiss();
             }
@@ -150,27 +153,27 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 RadioButton r5 = ((RadioButton)popupView.findViewById(R.id.radioButton11));
                 RadioButton r6 = ((RadioButton)popupView.findViewById(R.id.radioButton12));
                 TextView prs1 = (TextView)getView().findViewById(R.id.textView11);
-                String team1 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
+                String time1 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
 
-                //Toast.makeText(getActivity(),timeView.getText(),Toast.LENGTH_LONG).show();
                 prs1.setMovementMethod(new ScrollingMovementMethod());
+               // input1.setTextColor(0xFF830B39);
                 if(r1.isChecked()){
-                    prs1.append(input1.getText() + ": " + r1.getText() + " score: " + i + "-" + k + " Time: " +team1 + "\n");
+                    prs1.append(input1.getText() + " | " + r1.getText() + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time1 + "\n");
                 }
                 else if (r2.isChecked()){
-                    prs1.append(input1.getText() + ": " + r2.getText() + " score: " + i + "-" + k + "\n");
+                    prs1.append(input1.getText() + " | " + r2.getText() + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
                 }
                 else if (r3.isChecked()){
-                    prs1.append(input1.getText() + ": " + r3.getText() + " score: " + i + "-" + k + "\n");
+                    prs1.append(input1.getText() + " | " + r3.getText() + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
                 }
                 else if (r4.isChecked()){
-                    prs1.append(input1.getText() + ": " + r4.getText() + " score: " + i + "-" + k + "\n");
+                    prs1.append(input1.getText() + " | " + r4.getText() + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
                 }
                 else if (r5.isChecked()){
-                    prs1.append(input1.getText() + ": " + r5.getText() + " score: " + i + "-" + k + "\n");
+                    prs1.append(input1.getText() + " | " + r5.getText() + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
                 }
                 else if (r6.isChecked()){
-                    prs1.append(input1.getText() + ": " + r6.getText() + " score: " + i + "-" + k + "\n");
+                    prs1.append(input1.getText() + " | " + r6.getText() + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
                 }
                 popupWindow.dismiss();
 
