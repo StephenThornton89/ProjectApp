@@ -1,6 +1,7 @@
 package csu.matos.fragments;
 
 //import android.content.Context;
+import android.content.ContentValues;
 import android.graphics.Color;
 //import android.location.Location;
 import android.os.Bundle;
@@ -43,19 +44,18 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         pointsButton2.setOnClickListener(this);
         Button goalButton2 = (Button) rootView.findViewById(R.id.button4);
         goalButton2.setOnClickListener(this);
-        Button database = (Button) rootView.findViewById(R.id.button7);
-        database.setOnClickListener(this);
-        Button updateTeams = (Button) rootView.findViewById(R.id.button9);
-        updateTeams.setOnClickListener(this);
-        Button Stats1 = (Button) rootView.findViewById(R.id.button6);
-        Stats1.setOnClickListener(this);
         Button Stats2 = (Button) rootView.findViewById(R.id.button5);
         Stats2.setOnClickListener(this);
+        Button Stats1 = (Button) rootView.findViewById(R.id.button6);
+        Stats1.setOnClickListener(this);
+        Button database = (Button) rootView.findViewById(R.id.button7);
+        database.setOnClickListener(this);
+
+        Button updateTeams = (Button) rootView.findViewById(R.id.button9);
+        updateTeams.setOnClickListener(this);
         input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
-        //timeView = (TextView) rootView.findViewById(R.id.time_view);
         rb = (RadioButton) rootView.findViewById(R.id.radioButton7);
-
 
         return rootView;
     }
@@ -84,6 +84,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 break;
             case R.id.button7:
                 onClickDB(v);
+                break;
             case R.id.button9:
                 onClickupdateteams(v);
                 break;
@@ -110,32 +111,33 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 Spinner sp3 = ((Spinner)popupView1.findViewById(R.id.spinner3));
                 String str = sp3.getSelectedItem().toString();
 
+
                 TextView T2 = (TextView)getView().findViewById(R.id.textView11);
 
                 String time2 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
                 T2.setMovementMethod(new ScrollingMovementMethod());
                 if(r1.isChecked()){
-                    T2.append(input2.getText() + " | " + r1.getText()+" " + a + " Score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time2 + "\n"+ "Player "+ str);
+                    T2.append(input2.getText() + " | " + r1.getText()+" " + a + " Score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
                     a++;
                 }
                 else if (r2.isChecked()){
-                    T2.append(input2.getText() + " | " + r2.getText()+" " + b + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
+                    T2.append(input2.getText() + " | " + r2.getText()+" " + b + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
                     b++;
                 }
                 else if (r3.isChecked()){
-                    T2.append(input2.getText() + " | " + r3.getText()+" " + c + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
+                    T2.append(input2.getText() + " | " + r3.getText()+" " + c + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
                     c++;
                 }
                 else if (r4.isChecked()){
-                    T2.append(input2.getText() + " | " + r4.getText()+" " + d + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
+                    T2.append(input2.getText() + " | " + r4.getText()+" " + d + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
                     d++;
                 }
                 else if (r5.isChecked()){
-                    T2.append(input2.getText() + " | " + r5.getText()+" " + e + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
+                    T2.append(input2.getText() + " | " + r5.getText()+" " + e + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
                     e++;
                 }
                 else if (r6.isChecked()){
-                    T2.append(input2.getText() + " | " + r6.getText()+" " + f + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n");
+                    T2.append(input2.getText() + " | " + r6.getText()+" " + f + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
                     f++;
                 }
                 popupWindow.dismiss();
@@ -230,13 +232,12 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
         SQLiteDatabase db = getActivity().openOrCreateDatabase("GAAdb", android.content.Context.MODE_PRIVATE, null);
         Toast.makeText(getActivity(), "database created",Toast.LENGTH_LONG).show();
-        // TextView txt2 = (TextView)findViewById(R.id.textView);
-        //txt2.setText("Database Created\n");
 
         db.beginTransaction();
         try {
             db.execSQL("create table names (recid integer PRIMARY KEY autoincrement,Name text,LastName text,Position text);");
-            db.execSQL("insert into names(Name, LastName, Position ) values ('Test','Test1','Test2')");
+            db.execSQL("insert into names(Name, LastName, Position  ) values ('Test','Test1','Test2')");
+
             db.setTransactionSuccessful();
         } catch(SQLiteException e) {
             Toast.makeText(getActivity(), "roolback",Toast.LENGTH_LONG).show();
@@ -245,6 +246,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
             db.endTransaction();
         }
     }
+
+
     public void onClickupdateteams(View view) {
         String team1 =((EditText)getActivity().findViewById(R.id.editText3)).getText().toString();
         input1.setText(team1);
