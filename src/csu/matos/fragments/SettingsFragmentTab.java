@@ -34,7 +34,10 @@ public class SettingsFragmentTab extends Fragment implements View.OnClickListene
         public void onClickInsert(View view) {
         SQLiteDatabase db = getActivity().openOrCreateDatabase("GAAdb", android.content.Context.MODE_PRIVATE, null);
         String team1 =((EditText)getActivity().findViewById(R.id.editText)).getText().toString();
-        String Insert_data = "insert into names(Name) values ('"+team1+"');";
+            String team2 =((EditText)getActivity().findViewById(R.id.editText2)).getText().toString();
+            String pos =((EditText)getActivity().findViewById(R.id.editText5)).getText().toString();
+        String Insert_data = "insert into names(Name,LastName,Position) values ('"+team1+"','"+team2+"','"+pos+"');";
+
         db.beginTransaction();
         try{
             db.execSQL(Insert_data);

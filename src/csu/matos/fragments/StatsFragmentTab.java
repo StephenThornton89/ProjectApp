@@ -2,6 +2,7 @@ package csu.matos.fragments;
 
 //import android.content.Context;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.graphics.Color;
 //import android.location.Location;
 import android.os.Bundle;
@@ -30,6 +31,9 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     TextView input2;
    // TextView timeView;
     RadioButton rb;
+    //private static final String SELECT_SQL = "SELECT * FROM names WHERE Position = '"+str+"'",null);
+
+    private Cursor cur;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -149,6 +153,11 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     }
 
     public void onClickStats2(View view) {
+
+        SQLiteDatabase db = getActivity().openOrCreateDatabase("GAAdb", android.content.Context.MODE_PRIVATE, null);
+       // String selectposition = "select position FROM names";
+
+
         Toast.makeText(getActivity(), "STATS 2",Toast.LENGTH_LONG).show();
         View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup2, null);
         PopupWindow popupWindow = new PopupWindow(popupView,
@@ -166,10 +175,16 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 RadioButton r6 = ((RadioButton)popupView.findViewById(R.id.radioButton12));
                 TextView T1 = (TextView)getView().findViewById(R.id.textView11);
                 String time1 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
-
+                Spinner sp3 = ((Spinner)popupView.findViewById(R.id.spinner4));
+                String str = sp3.getSelectedItem().toString();
+                String SELECT_SQL = "SELECT * FROM names WHERE Position = '"+str+"'";
+                cur = db.rawQuery(SELECT_SQL, null);
+                cur.moveToFirst();
+                String name = cur.getString(1);
+                String surname = cur.getString(2);
                 T1.setMovementMethod(new ScrollingMovementMethod());
                 if(r1.isChecked()){
-                    T1.append(input1.getText() + " | " + r1.getText()+" " + u + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time1 + "\n");
+                    T1.append(input1.getText() + " | " + r1.getText()+" " + u + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time1 + "Player name:"+ name +" "+ surname + "\n");
                     u++;
                 }
                 else if (r2.isChecked()){
