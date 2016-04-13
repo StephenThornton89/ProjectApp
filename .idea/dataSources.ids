@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="GAAdb" uuid="e60eccad-85a6-484b-ab14-97ba0b264c6c">
+  <data-source name="GAAdb" uuid="17daa537-695a-4c3e-a951-366048eca989">
     <database-info product="SQLite" version="3.8.9" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
     <schema name="" catalog=""/>
