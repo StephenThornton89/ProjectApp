@@ -19,10 +19,6 @@ import android.database.sqlite.SQLiteException;
 import android.widget.PopupWindow;
 
 
-//import android.util.Xml;
-//import org.xmlpull.v1.XmlPullParser;
-//import org.xmlpull.v1.XmlPullParserException;
-//import java.io.IOException;
 
 public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
@@ -250,8 +246,10 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
         db.beginTransaction();
         try {
-            db.execSQL("create table names (recid integer PRIMARY KEY autoincrement,Name text,LastName text,Position text);");
-            db.execSQL("insert into names(Name, LastName, Position  ) values ('Test','Test1','Test2')");
+            db.execSQL("create table team1 (recid integer PRIMARY KEY autoincrement,Name text,LastName text,Position text);");
+            db.execSQL("insert into team1(Name, LastName, Position  ) values ('Test','Test1','Test2')");
+            db.execSQL("create table team2 (recid integer PRIMARY KEY autoincrement,Name text,LastName text,Position text);");
+            db.execSQL("insert into team2(Name, LastName, Position  ) values ('Test','Test1','Test2')");
 
             db.setTransactionSuccessful();
         } catch(SQLiteException e) {
