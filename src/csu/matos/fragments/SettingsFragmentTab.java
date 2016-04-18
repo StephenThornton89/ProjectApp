@@ -60,7 +60,7 @@ public class SettingsFragmentTab extends Fragment implements View.OnClickListene
             String Name2 =((EditText)getActivity().findViewById(R.id.editText6)).getText().toString();
             String Sname2 =((EditText)getActivity().findViewById(R.id.editText7)).getText().toString();
             String pos2 =((EditText)getActivity().findViewById(R.id.editText8)).getText().toString();
-            String Insert_data2 = "insert into team2(Name,LastName,Position) values ('"+Name2+"','"+Sname2+"','"+pos2+"');";
+            String Insert_data2 = "insert into team2(Name,LastName,Position2) values ('"+Name2+"','"+Sname2+"','"+pos2+"');";
 
         db.beginTransaction();
         try{

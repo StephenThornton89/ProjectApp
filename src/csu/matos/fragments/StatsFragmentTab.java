@@ -92,6 +92,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     }
 
     public void onClickStats1(View view) {
+        SQLiteDatabase db = getActivity().openOrCreateDatabase("GAAdb", android.content.Context.MODE_PRIVATE, null);
 
         Toast.makeText(getActivity(), "STATS 1",Toast.LENGTH_LONG).show();
         View popupView1 = getActivity().getLayoutInflater().inflate(R.layout.popup, null);
@@ -110,6 +111,11 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 RadioButton r6 = ((RadioButton)popupView1.findViewById(R.id.radioButton6));
                 Spinner sp3 = ((Spinner)popupView1.findViewById(R.id.spinner3));
                 String str = sp3.getSelectedItem().toString();
+                String SELECT_SQL = "SELECT * FROM team2 WHERE Position2 = '"+str+"'";
+                cur = db.rawQuery(SELECT_SQL, null);
+                cur.moveToFirst();
+                String name = cur.getString(1);
+                String surname = cur.getString(2);
 
 
                 TextView T2 = (TextView)getView().findViewById(R.id.textView11);
@@ -117,27 +123,27 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 String time2 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
                 T2.setMovementMethod(new ScrollingMovementMethod());
                 if(r1.isChecked()){
-                    T2.append(input2.getText() + " | " + r1.getText()+" " + a + " Score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
+                    T2.append(input2.getText() + " | " + r1.getText()+" " + a + " Score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     a++;
                 }
                 else if (r2.isChecked()){
-                    T2.append(input2.getText() + " | " + r2.getText()+" " + b + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
+                    T2.append(input2.getText() + " | " + r2.getText()+" " + b + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     b++;
                 }
                 else if (r3.isChecked()){
-                    T2.append(input2.getText() + " | " + r3.getText()+" " + c + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
+                    T2.append(input2.getText() + " | " + r3.getText()+" " + c + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     c++;
                 }
                 else if (r4.isChecked()){
-                    T2.append(input2.getText() + " | " + r4.getText()+" " + d + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
+                    T2.append(input2.getText() + " | " + r4.getText()+" " + d + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     d++;
                 }
                 else if (r5.isChecked()){
-                    T2.append(input2.getText() + " | " + r5.getText()+" " + e + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
+                    T2.append(input2.getText() + " | " + r5.getText()+" " + e + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     e++;
                 }
                 else if (r6.isChecked()){
-                    T2.append(input2.getText() + " | " + r6.getText()+" " + f + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 + "\n"+ "(Player "+ str+")"+ "\n");
+                    T2.append(input2.getText() + " | " + r6.getText()+" " + f + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     f++;
                 }
                 popupWindow.dismiss();
@@ -173,34 +179,34 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
                 String time1 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
                 Spinner sp3 = ((Spinner)popupView.findViewById(R.id.spinner4));
                 String str = sp3.getSelectedItem().toString();
-                String SELECT_SQL = "SELECT * FROM names WHERE Position = '"+str+"'";
+                String SELECT_SQL = "SELECT * FROM team1 WHERE Position = '"+str+"'";
                 cur = db.rawQuery(SELECT_SQL, null);
                 cur.moveToFirst();
                 String name = cur.getString(1);
                 String surname = cur.getString(2);
                 T1.setMovementMethod(new ScrollingMovementMethod());
                 if(r1.isChecked()){
-                    T1.append(input1.getText() + " | " + r1.getText()+" " + u + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time1 + "Player name:"+ name +" "+ surname + "\n");
+                    T1.append(input1.getText() + " | " + r1.getText()+" " + u + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time1+"\n" + "Player name: "+ name +" "+ surname + "\n");
                     u++;
                 }
                 else if (r2.isChecked()){
-                    T1.append(input1.getText() + " | " + r2.getText()+" " + p + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
+                    T1.append(input1.getText() + " | " + r2.getText()+" " + p + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     p++;
                 }
                 else if (r3.isChecked()){
-                    T1.append(input1.getText() + " | " + r3.getText()+" " + w + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
+                    T1.append(input1.getText() + " | " + r3.getText()+" " + w + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     w++;
                 }
                 else if (r4.isChecked()){
-                    T1.append(input1.getText() + " | " + r4.getText()+" " + x + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
+                    T1.append(input1.getText() + " | " + r4.getText()+" " + x + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     x++;
                 }
                 else if (r5.isChecked()){
-                    T1.append(input1.getText() + " | " + r5.getText()+" " + y + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
+                    T1.append(input1.getText() + " | " + r5.getText()+" " + y + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     y++;
                 }
                 else if (r6.isChecked()){
-                    T1.append(input1.getText() + " | " + r6.getText()+" " + z + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 + "\n");
+                    T1.append(input1.getText() + " | " + r6.getText()+" " + z + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
                     z++;
                 }
                 popupWindow.dismiss();
@@ -248,8 +254,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         try {
             db.execSQL("create table team1 (recid integer PRIMARY KEY autoincrement,Name text,LastName text,Position text);");
             db.execSQL("insert into team1(Name, LastName, Position  ) values ('Test','Test1','Test2')");
-            db.execSQL("create table team2 (recid integer PRIMARY KEY autoincrement,Name text,LastName text,Position text);");
-            db.execSQL("insert into team2(Name, LastName, Position  ) values ('Test','Test1','Test2')");
+            db.execSQL("create table team2 (recid integer PRIMARY KEY autoincrement,Name text,LastName text,Position2 text);");
+            db.execSQL("insert into team2(Name, LastName, Position2  ) values ('Test','Test1','Test2')");
 
             db.setTransactionSuccessful();
         } catch(SQLiteException e) {
