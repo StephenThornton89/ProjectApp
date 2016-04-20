@@ -264,6 +264,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
         db.beginTransaction();
         try {
+            db.execSQL("drop table team1");
+            db.execSQL("drop table team2");
             db.execSQL("create table team1 (recid integer PRIMARY KEY autoincrement,Name text,LastName text,Position text);");
             db.execSQL("insert into team1(Name, LastName, Position  ) values ('Test','Test1','Test2')");
             db.execSQL("create table team2 (recid integer PRIMARY KEY autoincrement,Name text,LastName text,Position2 text);");
