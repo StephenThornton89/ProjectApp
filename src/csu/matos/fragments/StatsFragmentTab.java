@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.graphics.Color;
 //import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -17,12 +18,17 @@ import android.view.ViewGroup.LayoutParams;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.widget.PopupWindow;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.IOException;
 
 
 public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
     int i=0,k=0,j=0,l=0,a=1,b=1,c=1,d=1,e=1,f=1,u=1,p=1,w=1,x=1,y=1,z=1;
+    String detail ="";
+
     TextView input1;
     TextView input2;
    // TextView timeView;
@@ -53,10 +59,13 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
         Button updateTeams = (Button) rootView.findViewById(R.id.button9);
         updateTeams.setOnClickListener(this);
+        Button server = (Button) rootView.findViewById(R.id.button11);
+        server.setOnClickListener(this);
         input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
         rb = (RadioButton) rootView.findViewById(R.id.radioButton7);
-
+       // JSONObject json = new JSONObject();
+       // new HttpAsyncTask().execute(baseUrl, json.toString());
         return rootView;
     }
 
@@ -88,6 +97,9 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
             case R.id.button9:
                 onClickupdateteams(v);
                 break;
+            case R.id.button11:
+				Connect_to_server(v);
+				break;
         }
     }
 
@@ -320,5 +332,61 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
             input2.setBackgroundColor(Color.GREEN);
         }
     }
+    public void Connect_to_server (View v){
+		// TextView T1 = (TextView)getView().findViewById(R.id.textView11);
+		//String info2=T1.getText().toString();
+		//Toast.makeText(getActivity(), info2,Toast.LENGTH_LONG).show();
+		String info =((TextView)getActivity().findViewById(R.id.textView11)).getText().toString();
+		detail=info;
+        Toast.makeText(getActivity(), detail, Toast.LENGTH_LONG).show();
+		JSONObject json = new JSONObject();
+		try {
+			json.accumulate("name",detail);
+			String baseUrl = "http://10.12.15.39:8080/InputToDatabase";
+			//String baseUrl = "http://192.168.1.103:8080/InputToDatabase";
+			//Toast.makeText(getActivity(), "In try",Toast.LENGTH_LONG).show();
+			new HttpAsyncTask().execute(baseUrl, json.toString());
+			Toast.makeText(getActivity(), "Async task", Toast.LENGTH_LONG).show();
+		}
+		catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+    public  class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            String jsonString = "";
+
+            try {
+
+                jsonString = HttpUtils.urlContentPost(urls[0], "GameStats", urls[1]);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println(jsonString);
+            return jsonString;
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            JSONObject jsonResult = null;
+            try {
+                jsonResult = new JSONObject(result);
+                System.out.println("Data");
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+    }
+
+
+
 }
 
