@@ -36,7 +36,8 @@ public class SettingsFragmentTab extends Fragment implements View.OnClickListene
                 break;
         }
     }
-        public void onClickInsert(View view) {
+
+    public void onClickInsert(View view) {
         SQLiteDatabase db = getActivity().openOrCreateDatabase("GAAdb", android.content.Context.MODE_PRIVATE, null);
         String team1 =((EditText)getActivity().findViewById(R.id.editText)).getText().toString();
             String team2 =((EditText)getActivity().findViewById(R.id.editText2)).getText().toString();
@@ -55,6 +56,7 @@ public class SettingsFragmentTab extends Fragment implements View.OnClickListene
         }
 
     }
+
     public void onClickInsert2(View view) {
         SQLiteDatabase db = getActivity().openOrCreateDatabase("GAAdb", android.content.Context.MODE_PRIVATE, null);
             String Name2 =((EditText)getActivity().findViewById(R.id.editText6)).getText().toString();

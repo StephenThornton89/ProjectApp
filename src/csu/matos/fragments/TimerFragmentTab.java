@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TimerFragmentTab extends Fragment implements View.OnClickListener{
 
@@ -115,15 +116,22 @@ public class TimerFragmentTab extends Fragment implements View.OnClickListener{
                 }
                 handler.postDelayed(this, 1000);
                 //Half time notification
-                if(minutes==35){
+                if(minutes==35&& secs ==0){
                     // Get instance of Vibrator from current Context
                     Vibrator vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
                     vib.vibrate(2000);
                 }
                 //Full time notification
-                else if (minutes==70){
+                else if (minutes==70&& secs ==0){
                     // Get instance of Vibrator from current Context
                     Vibrator vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                    vib.vibrate(2000);
+                }
+                //Demonstration purpose
+                else if (minutes==1 && secs ==0){
+                    // Get instance of Vibrator from current Context
+                    Vibrator vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                    Toast.makeText(getActivity(), "Time Up ", Toast.LENGTH_SHORT).show();
                     vib.vibrate(2000);
                 }
             }
