@@ -31,9 +31,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
     TextView input1;
     TextView input2;
-   // TextView timeView;
     RadioButton rb;
-    //private static final String SELECT_SQL = "SELECT * FROM names WHERE Position = '"+str+"'",null);
+
 
     private Cursor cur;
 
@@ -64,8 +63,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
         input1 = (TextView)rootView.findViewById(R.id.textView);
         input2 = (TextView)rootView.findViewById(R.id.textView2);
         rb = (RadioButton) rootView.findViewById(R.id.radioButton7);
-       // JSONObject json = new JSONObject();
-       // new HttpAsyncTask().execute(baseUrl, json.toString());
+
         return rootView;
     }
 
@@ -169,8 +167,6 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
     public void onClickStats2(View view) {
 
         SQLiteDatabase db = getActivity().openOrCreateDatabase("GAAdb", android.content.Context.MODE_PRIVATE, null);
-       // String selectposition = "select position FROM names";
-
 
         Toast.makeText(getActivity(), "STATS 2",Toast.LENGTH_LONG).show();
         View popupView = getActivity().getLayoutInflater().inflate(R.layout.popup2, null);
@@ -337,8 +333,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 		JSONObject json = new JSONObject();
 		try {
 			json.accumulate("name",detail);
-			//String baseUrl = "http://10.12.15.39:8080/InputToDatabase";
-			String baseUrl = "http://192.168.0.12:8080/InputToDatabase";
+			String baseUrl = "http://10.12.15.39:8080/InputToDatabase";
+			
 			//Toast.makeText(getActivity(), "In try",Toast.LENGTH_LONG).show();
 			new HttpAsyncTask().execute(baseUrl, json.toString());
 			Toast.makeText(getActivity(), "Async task", Toast.LENGTH_LONG).show();
