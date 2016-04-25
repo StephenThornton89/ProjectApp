@@ -115,51 +115,51 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
             @Override
             public void onClick(View v) {
-                RadioButton r1 = ((RadioButton)popupView1.findViewById(R.id.radioButton));
-                RadioButton r2 = ((RadioButton)popupView1.findViewById(R.id.radioButton2));
-                RadioButton r3 = ((RadioButton)popupView1.findViewById(R.id.radioButton3));
-                RadioButton r4 = ((RadioButton)popupView1.findViewById(R.id.radioButton4));
-                RadioButton r5 = ((RadioButton)popupView1.findViewById(R.id.radioButton5));
-                RadioButton r6 = ((RadioButton)popupView1.findViewById(R.id.radioButton6));
-                Spinner sp3 = ((Spinner)popupView1.findViewById(R.id.spinner3));
+                try {
+                RadioButton r1 = ((RadioButton) popupView1.findViewById(R.id.radioButton));
+                RadioButton r2 = ((RadioButton) popupView1.findViewById(R.id.radioButton2));
+                RadioButton r3 = ((RadioButton) popupView1.findViewById(R.id.radioButton3));
+                RadioButton r4 = ((RadioButton) popupView1.findViewById(R.id.radioButton4));
+                RadioButton r5 = ((RadioButton) popupView1.findViewById(R.id.radioButton5));
+                RadioButton r6 = ((RadioButton) popupView1.findViewById(R.id.radioButton6));
+                Spinner sp3 = ((Spinner) popupView1.findViewById(R.id.spinner3));
                 String str = sp3.getSelectedItem().toString();
-                String SELECT_SQL = "SELECT * FROM team2 WHERE Position2 = '"+str+"'";
+                String SELECT_SQL = "SELECT * FROM team2 WHERE Position2 = '" + str + "'";
                 cur = db.rawQuery(SELECT_SQL, null);
                 cur.moveToFirst();
                 String name = cur.getString(1);
                 String surname = cur.getString(2);
 
 
-                TextView T2 = (TextView)getView().findViewById(R.id.textView11);
+                TextView T2 = (TextView) getView().findViewById(R.id.textView11);
 
-                String time2 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
+                String time2 = ((TextView) getActivity().findViewById(R.id.textView13)).getText().toString();
                 T2.setMovementMethod(new ScrollingMovementMethod());
-                if(r1.isChecked()){
-                    T2.append(input2.getText() + " | " + r1.getText()+" " + a + " Score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
+                if (r1.isChecked()) {
+                    T2.append(input2.getText() + " | " + r1.getText() + " " + a + " Score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time2 + "\n" + "Player name: " + name + " " + surname + "\n");
                     a++;
-                }
-                else if (r2.isChecked()){
-                    T2.append(input2.getText() + " | " + r2.getText()+" " + b + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
+                } else if (r2.isChecked()) {
+                    T2.append(input2.getText() + " | " + r2.getText() + " " + b + " Score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time2 + "\n" + "Player name: " + name + " " + surname + "\n");
                     b++;
-                }
-                else if (r3.isChecked()){
-                    T2.append(input2.getText() + " | " + r3.getText()+" " + c + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
+                } else if (r3.isChecked()) {
+                    T2.append(input2.getText() + " | " + r3.getText() + " " + c + " Score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time2 + "\n" + "Player name: " + name + " " + surname + "\n");
                     c++;
-                }
-                else if (r4.isChecked()){
-                    T2.append(input2.getText() + " | " + r4.getText()+" " + d + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
+                } else if (r4.isChecked()) {
+                    T2.append(input2.getText() + " | " + r4.getText() + " " + d + " Score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time2 + "\n" + "Player name: " + name + " " + surname + "\n");
                     d++;
-                }
-                else if (r5.isChecked()){
-                    T2.append(input2.getText() + " | " + r5.getText()+" " + e + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
+                } else if (r5.isChecked()) {
+                    T2.append(input2.getText() + " | " + r5.getText() + " " + e + " Score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time2 + "\n" + "Player name: " + name + " " + surname + "\n");
                     e++;
-                }
-                else if (r6.isChecked()){
-                    T2.append(input2.getText() + " | " + r6.getText()+" " + f + " Score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time2 +"\n" + "Player name: "+ name +" "+ surname + "\n");
+                } else if (r6.isChecked()) {
+                    T2.append(input2.getText() + " | " + r6.getText() + " " + f + " Score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time2 + "\n" + "Player name: " + name + " " + surname + "\n");
                     f++;
                 }
                 popupWindow.dismiss();
-                //Toast.makeText(getActivity(), str,Toast.LENGTH_LONG).show();
+            }
+                catch (Exception e)
+                {
+                    Toast.makeText(getActivity(), "Position selected not in database", Toast.LENGTH_LONG).show();
+                }
             }
         });
         Button StatsButton = (Button) getView().findViewById(R.id.button6);
@@ -181,49 +181,54 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
             @Override
             public void onClick(View v) {
-                RadioButton r1 = ((RadioButton)popupView.findViewById(R.id.radioButton7));
-                RadioButton r2 = ((RadioButton)popupView.findViewById(R.id.radioButton8));
-                RadioButton r3 = ((RadioButton)popupView.findViewById(R.id.radioButton9));
-                RadioButton r4 = ((RadioButton)popupView.findViewById(R.id.radioButton10));
-                RadioButton r5 = ((RadioButton)popupView.findViewById(R.id.radioButton11));
-                RadioButton r6 = ((RadioButton)popupView.findViewById(R.id.radioButton12));
-                TextView T1 = (TextView)getView().findViewById(R.id.textView11);
-                String time1 =((TextView)getActivity().findViewById(R.id.textView13)).getText().toString();
-                Spinner sp3 = ((Spinner)popupView.findViewById(R.id.spinner4));
+                try {
+                RadioButton r1 = ((RadioButton) popupView.findViewById(R.id.radioButton7));
+                RadioButton r2 = ((RadioButton) popupView.findViewById(R.id.radioButton8));
+                RadioButton r3 = ((RadioButton) popupView.findViewById(R.id.radioButton9));
+                RadioButton r4 = ((RadioButton) popupView.findViewById(R.id.radioButton10));
+                RadioButton r5 = ((RadioButton) popupView.findViewById(R.id.radioButton11));
+                RadioButton r6 = ((RadioButton) popupView.findViewById(R.id.radioButton12));
+                TextView T1 = (TextView) getView().findViewById(R.id.textView11);
+                String time1 = ((TextView) getActivity().findViewById(R.id.textView13)).getText().toString();
+                Spinner sp3 = ((Spinner) popupView.findViewById(R.id.spinner4));
                 String str = sp3.getSelectedItem().toString();
-                String SELECT_SQL = "SELECT * FROM team1 WHERE Position = '"+str+"'";
-                cur = db.rawQuery(SELECT_SQL, null);
-                cur.moveToFirst();
-                String name = cur.getString(1);
-                String surname = cur.getString(2);
-                T1.setMovementMethod(new ScrollingMovementMethod());
-                if(r1.isChecked()){
-                    T1.append(input1.getText() + " | " + r1.getText()+" " + u + " score: " + i + "-" + k+" " + j + "-" + l +  " Time: " +time1+"\n" + "Player name: "+ name +" "+ surname + "\n");
-                    u++;
-                }
-                else if (r2.isChecked()){
-                    T1.append(input1.getText() + " | " + r2.getText()+" " + p + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
-                    p++;
-                }
-                else if (r3.isChecked()){
-                    T1.append(input1.getText() + " | " + r3.getText()+" " + w + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
-                    w++;
-                }
-                else if (r4.isChecked()){
-                    T1.append(input1.getText() + " | " + r4.getText()+" " + x + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
-                    x++;
-                }
-                else if (r5.isChecked()){
-                    T1.append(input1.getText() + " | " + r5.getText()+" " + y + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
-                    y++;
-                }
-                else if (r6.isChecked()){
-                    T1.append(input1.getText() + " | " + r6.getText()+" " + z + " score: " + i + "-" + k+" " + j + "-" + l + " Time: " +time1 +"\n" + "Player name: "+ name +" "+ surname + "\n");
-                    z++;
-                }
-                popupWindow.dismiss();
 
-            }
+                    String SELECT_SQL = "SELECT * FROM team1 WHERE Position = '" + str + "'";
+                    cur = db.rawQuery(SELECT_SQL, null);
+                    cur.moveToFirst();
+                    String name = cur.getString(1);
+                    String surname = cur.getString(2);
+
+                    T1.setMovementMethod(new ScrollingMovementMethod());
+                    if (r1.isChecked()) {
+                        T1.append(input1.getText() + " | " + r1.getText() + " " + u + " score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time1 + "\n" + "Player name: " + name + " " + surname + "\n");
+                        u++;
+                    } else if (r2.isChecked()) {
+                        T1.append(input1.getText() + " | " + r2.getText() + " " + p + " score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time1 + "\n" + "Player name: " + name + " " + surname + "\n");
+                        p++;
+                    } else if (r3.isChecked()) {
+                        T1.append(input1.getText() + " | " + r3.getText() + " " + w + " score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time1 + "\n" + "Player name: " + name + " " + surname + "\n");
+                        w++;
+                    } else if (r4.isChecked()) {
+                        T1.append(input1.getText() + " | " + r4.getText() + " " + x + " score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time1 + "\n" + "Player name: " + name + " " + surname + "\n");
+                        x++;
+                    } else if (r5.isChecked()) {
+                        T1.append(input1.getText() + " | " + r5.getText() + " " + y + " score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time1 + "\n" + "Player name: " + name + " " + surname + "\n");
+                        y++;
+                    } else if (r6.isChecked()) {
+                        T1.append(input1.getText() + " | " + r6.getText() + " " + z + " score: " + i + "-" + k + " " + j + "-" + l + " Time: " + time1 + "\n" + "Player name: " + name + " " + surname + "\n");
+                        z++;
+                    }
+
+
+                    popupWindow.dismiss();
+                }
+                catch (Exception e)
+                    {
+                        Toast.makeText(getActivity(), "Position selected not in database", Toast.LENGTH_LONG).show();
+                    }
+
+                }
         });
 
 
@@ -282,56 +287,44 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 
 
     public void onClickupdateteams(View view) {
-        String team1 =((EditText)getActivity().findViewById(R.id.editText3)).getText().toString();
-        input1.setText(team1);
-        String team2 =((EditText)getActivity().findViewById(R.id.editText4)).getText().toString();
-        input2.setText(team2);
-        Spinner sp1 = ((Spinner)getActivity().findViewById(R.id.spinner));
-        String str = sp1.getSelectedItem().toString();
-        if(str.equals("Blue"))
-        {
-            Toast.makeText(getActivity(),
-                    "text sent to Stats tabs:\n "+ str,
-                    Toast.LENGTH_LONG).show();
-            input1.setBackgroundColor(Color.BLUE);
+        try {
+            String team1 = ((EditText) getActivity().findViewById(R.id.editText3)).getText().toString();
+            input1.setText(team1);
+            String team2 = ((EditText) getActivity().findViewById(R.id.editText4)).getText().toString();
+            input2.setText(team2);
+            Spinner sp1 = ((Spinner) getActivity().findViewById(R.id.spinner));
+            String str = sp1.getSelectedItem().toString();
+            if (str.equals("Blue")) {
+                Toast.makeText(getActivity(),
+                        "text sent to Stats tabs:\n " + str,
+                        Toast.LENGTH_LONG).show();
+                input1.setBackgroundColor(Color.BLUE);
+            } else if (str.equals("Red")) {
+                input1.setBackgroundColor(Color.RED);
+            } else if (str.equals("Maroon")) {
+                input1.setBackgroundColor(0xFF830B39);
+            } else if (str.equals("Black")) {
+                input1.setBackgroundColor(Color.BLACK);
+            } else if (str.equals("Green")) {
+                input1.setBackgroundColor(Color.GREEN);
+            }
+            Spinner sp2 = ((Spinner) getActivity().findViewById(R.id.spinner2));
+            String str2 = sp2.getSelectedItem().toString();
+            if (str2.equals("Blue")) {
+                input2.setBackgroundColor(Color.BLUE);
+            } else if (str2.equals("Red")) {
+                input2.setBackgroundColor(Color.RED);
+            } else if (str2.equals("Maroon")) {
+                input2.setBackgroundColor(0xFF830B39);
+            } else if (str2.equals("Black")) {
+                input2.setBackgroundColor(Color.BLACK);
+            } else if (str2.equals("Green")) {
+                input2.setBackgroundColor(Color.GREEN);
+            }
         }
-        else if (str.equals("Red"))
+        catch(Exception e)
         {
-            input1.setBackgroundColor(Color.RED);
-        }
-        else if (str.equals("Maroon"))
-        {
-            input1.setBackgroundColor(0xFF830B39);
-        }
-        else if (str.equals("Black"))
-        {
-            input1.setBackgroundColor(Color.BLACK);
-        }
-        else if (str.equals("Green"))
-        {
-            input1.setBackgroundColor(Color.GREEN);
-        }
-        Spinner sp2 = ((Spinner)getActivity().findViewById(R.id.spinner2));
-        String str2 = sp2.getSelectedItem().toString();
-        if(str2.equals("Blue"))
-        {
-            input2.setBackgroundColor(Color.BLUE);
-        }
-        else if (str2.equals("Red"))
-        {
-            input2.setBackgroundColor(Color.RED);
-        }
-        else if (str2.equals("Maroon"))
-        {
-            input2.setBackgroundColor(0xFF830B39);
-        }
-        else if (str2.equals("Black"))
-        {
-            input2.setBackgroundColor(Color.BLACK);
-        }
-        else if (str2.equals("Green"))
-        {
-            input2.setBackgroundColor(Color.GREEN);
+            Toast.makeText(getActivity(), "No teams entered",Toast.LENGTH_LONG).show();
         }
     }
     public void Connect_to_server (View v){
@@ -344,8 +337,8 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 		JSONObject json = new JSONObject();
 		try {
 			json.accumulate("name",detail);
-			String baseUrl = "http://10.12.15.39:8080/InputToDatabase";
-			//String baseUrl = "http://192.168.1.103:8080/InputToDatabase";
+			//String baseUrl = "http://10.12.15.39:8080/InputToDatabase";
+			String baseUrl = "http://192.168.0.12:8080/InputToDatabase";
 			//Toast.makeText(getActivity(), "In try",Toast.LENGTH_LONG).show();
 			new HttpAsyncTask().execute(baseUrl, json.toString());
 			Toast.makeText(getActivity(), "Async task", Toast.LENGTH_LONG).show();
