@@ -334,7 +334,7 @@ public class StatsFragmentTab extends Fragment implements View.OnClickListener {
 		try {
 			json.accumulate("name",detail);
 			String baseUrl = "http://10.12.15.39:8080/InputToDatabase";
-			
+            //String baseUrl = "http://192.168.0.12:8080/InputToDatabase";
 			//Toast.makeText(getActivity(), "In try",Toast.LENGTH_LONG).show();
 			new HttpAsyncTask().execute(baseUrl, json.toString());
 			Toast.makeText(getActivity(), "Async task", Toast.LENGTH_LONG).show();

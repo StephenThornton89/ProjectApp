@@ -54,34 +54,12 @@ public class MainActivity extends Activity {
 		Tab stats1= actionBar.newTab().setText("Stats").setTabListener(new TabListener<StatsFragmentTab>(this, "StatsFrag", StatsFragmentTab.class));
 		Tab timer1= actionBar.newTab().setText("Timer").setTabListener(new TabListener<TimerFragmentTab>(this, "TimerFrag", TimerFragmentTab.class));
 		Tab settings1= actionBar.newTab().setText("Settings").setTabListener(new TabListener<SettingsFragmentTab>(this, "SettingsFrag", SettingsFragmentTab.class));
-		//stats.setTabListener(new TabListener<Fragment>(this, "Stats", statsFragmentTab));
-		//timer.setTabListener(new TabListener(timerFragmentTab));
-		//settings.setTabListener(new TabListener(settingsFragmentTab));
 
 		// Adding tabs to the ActionBar.
 		actionBar.addTab(stats1);
 		actionBar.addTab(timer1);
 		actionBar.addTab(settings1);
-//		Button button =(Button) findViewById(R.id.button11);
-//		button.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				String info =((TextView)findViewById(R.id.textView11)).getText().toString();
-//				detail=info;
-//				JSONObject json = new JSONObject();
-//				try {
-//					json.accumulate("username",detail);
-//					String baseUrl = "http://10.12.15.39:8080/InputToDatabase";
-//					//String baseUrl = "http://192.168.1.103:8080/InputToDatabase";
-//					//Toast.makeText(getActivity(), "In try",Toast.LENGTH_LONG).show();
-//					new HttpAsyncTask().execute(baseUrl, json.toString());
-//					//Toast.makeText(getActivity(), "In try", Toast.LENGTH_LONG).show();
-//				}
-//				catch (JSONException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
+
 	}
 
 
